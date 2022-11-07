@@ -4,3 +4,4 @@
         //level 2: one-two digit/two variables- add/minus/multiply/
         //level 3: two-two digit/two variables- add/minus/multiply/
         //level 4: one-two digit/three variables- add/minus/multiply //not done yet
+        - features: record info like correcte rate and reaction time
