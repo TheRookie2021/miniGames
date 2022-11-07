@@ -1,14 +1,27 @@
-#include<iostream>
-#include<vector>
-#include<string>
+#include <iostream>
+#include <vector>
+#include <string>
 #include <stdlib.h>
+#include <fstream>
+#include <ctime>
 using namespace std;
 
 //level 1: one-one digit/two variables- add/minus/multiply/
 //level 2: one-two digit/two variables- add/minus/multiply/
 //level 3: two-two digit/two variables- add/minus/multiply/
 //level 4: one-two digit/three variables- add/minus/multiply
-
+class Timer{
+    private:
+        time_t start_ts;
+    public:
+        Timer(){
+            start_ts=time(NULL);
+            cout <<"start!"<<start_ts<<endl;
+        }
+        int getElapsedTime(){
+            return (time(NULL)-start_ts);
+        }
+};
 int exercise_generator(int level){
     int ans;
     srand(time(NULL));
@@ -69,11 +82,18 @@ int main(){
     int temp;
     int ans;
     string enter;
+    ofstream record;
+    record.open("record.txt",ios::app);
+
+
     cout<<"level(1~3): ";
     cin>>level;
     if (level <= 0)
         return 0;
     temp = iteration;
+
+    Timer tick_tak;
+    int RA;//reaction time
     while (temp--)
     {
         ans=exercise_generator(level);
@@ -102,8 +122,14 @@ int main(){
         }
         cout<<"------------";
     }
+    RA = tick_tak.getElapsedTime();
 
     cout << "\nthis is your scores: " << point << "/" << iteration << endl;
-
+    cout << "time: " << RA << endl;
+    record << "level:\t" << level << "\tscores:\t" << point << "\t/\t" << iteration ;
+    record << "\treaction time:\t" << RA << "\t";
+    time_t date=time(NULL);
+    record<< asctime(localtime(&date));
+    record.close();
     return 0;
 }
