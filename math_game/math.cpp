@@ -81,19 +81,21 @@ int main(){
     int iteration=10;
     int temp;
     int ans;
+    int RA;//reaction time
     string enter;
     ofstream record;
+    time_t date=time(NULL);
+
     record.open("record.txt",ios::app);
+    temp = iteration;
 
 
     cout<<"level(1~3): ";
     cin>>level;
     if (level <= 0)
         return 0;
-    temp = iteration;
 
     Timer tick_tak;
-    int RA;//reaction time
     while (temp--)
     {
         ans=exercise_generator(level);
@@ -128,7 +130,6 @@ int main(){
     cout << "time: " << RA << endl;
     record << "level:\t" << level << "\tscores:\t" << point << "\t/\t" << iteration ;
     record << "\treaction time:\t" << RA << "\t";
-    time_t date=time(NULL);
     record<< asctime(localtime(&date));
     record.close();
     return 0;
