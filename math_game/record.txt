@@ -2,3 +2,4 @@ level:	1	scores:	10	/	10  reaction time:	16
 level:	2	scores:	10	/	10  reaction time:	34
 level:	1	scores:	10	/	10	reaction time:	23  Mon Nov  7 21:21:37 2022
 
+level:	2	scores:	10	/	10	reaction time:	40	Tue Nov  8 10:45:57 2022
