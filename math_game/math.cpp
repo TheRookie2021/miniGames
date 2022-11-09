@@ -9,25 +9,64 @@ using namespace std;
 //level 1: one-one digit/two variables- add/minus/multiply/
 //level 2: one-two digit/two variables- add/minus/multiply/
 //level 3: two-two digit/two variables- add/minus/multiply/
-//level 4: one-two digit/three variables- add/minus/multiply
+//level 4: one-one-one digit/three variables- add/minus/multiply
+//level 5: one-one-two digit/three variables- add/minus/multiply
+//level 6: one-two-two digit/three variables- add/minus/multiply
+//level 7: two-two-two digit/three variables- add/minus/multiply
 class Timer{
     private:
         time_t start_ts;
     public:
         Timer(){
             start_ts=time(NULL);
-            cout <<"start!"<<start_ts<<endl;
         }
         int getElapsedTime(){
             return (time(NULL)-start_ts);
         }
 };
+char SelectOp(int select){
+    switch (select)
+    {
+    case 0:
+        return '+';
+        break;
+    case 1:
+        return '-';
+        break;
+    case 2:
+        return '*';
+        break;
+    case 3:
+        return '/';
+        break;
+    }
+}
+int CharToOp(int a, char op, int b){
+    switch (op)
+    {
+    case '+':
+        return a + b;
+        break;
+    case '-':
+        return a - b;
+        break;
+    case '*':
+        return a * b;
+        break;
+    // case '/':
+    //     return a / b;
+        break;
+    }
+}
+
 int exercise_generator(int level){
     int ans;
     srand(time(NULL));
     if(level<=3)
     { // two variables
         int a,b,select;
+        select=rand() % 3;
+        
         switch (level)
         {//setting digit of variables
         case 1:
@@ -42,7 +81,6 @@ int exercise_generator(int level){
         }
 
         // UI and answer
-        select=rand() % 3;
         if (select== 0)
         { // add
             cout << endl
@@ -71,6 +109,53 @@ int exercise_generator(int level){
             ans = a * b;
         }
     }
+    if (level > 3 && level <= 7)
+    {//threee variables
+        int a,b,c,select_first,select_second, select_pair;
+        switch (level)
+        {
+        case 4:
+            a = rand() % 10;
+            b = rand() % 10;
+            c = rand() % 10;
+            break;
+        case 5:
+            a = rand() % 10;
+            b = rand() % 10;
+            c = rand() % 100;
+            break;
+
+        case 6:
+            a = rand() % 10;
+            b = rand() % 100;
+            c = rand() % 100;
+            break;
+        case 7:
+            a = rand() % 100;
+            b = rand() % 100;
+            c = rand() % 100;
+            break;
+        }
+
+        
+        // UI and answer 3*3 combs: M1  (M2: make use of prefix expression)
+        select_first = rand() % 3;
+        select_second = rand() % 3;
+        select_pair = rand() % 2;
+        if(select_pair){
+            ans = CharToOp(CharToOp(a, SelectOp(select_first), b), SelectOp(select_second), c);
+            cout << endl
+                 << "(" << a << " " << SelectOp(select_first) << " " << b << ") "
+                 << SelectOp(select_second) << " " << c << " = " ;
+        }
+        else
+        {
+            ans = CharToOp(a, SelectOp(select_first), CharToOp(b, SelectOp(select_second), c));
+            cout << endl
+                 << a << " " << SelectOp(select_first) 
+                 << " (" << b << " " << SelectOp(select_second) << " " << c << ") = ";
+        }
+    }
 
     return ans;
 }
@@ -90,9 +175,9 @@ int main(){
     temp = iteration;
 
 
-    cout<<"level(1~3): ";
+    cout<<"level(1~7): ";
     cin>>level;
-    if (level <= 0)
+    if (level <= 0 || level > 7)
         return 0;
 
     Timer tick_tak;
