@@ -6,13 +6,19 @@
 #include <ctime>
 using namespace std;
 
-//level 1: one-one digit/two variables- add/minus/multiply/
-//level 2: one-two digit/two variables- add/minus/multiply/
-//level 3: two-two digit/two variables- add/minus/multiply/
-//level 4: one-one-one digit/three variables- add/minus/multiply
-//level 5: one-one-two digit/three variables- add/minus/multiply
-//level 6: one-two-two digit/three variables- add/minus/multiply
-//level 7: two-two-two digit/three variables- add/minus/multiply
+// - level 1: two variables/one-one digit  - add/minus/multiply
+// - level 2: two variables/one-two digit  - add/minus/multiply
+// - level 3: two variables/two-two digit  - add/minus/multiply
+// - level 4: three variables/one-one-one digit    - add/minus/multiply
+// - level 5: three variables/one-one-two digit    - add/minus/multiply
+// - level 6: three variables/one-two-two digit    - add/minus/multiply
+// - level 7: three variables/two-two-two digit    - add/minus/multiply
+
+// next update:
+    // use header file
+    // handling exception of cin<<enter, stoi(enter)
+    // let level be a variable varies according to the current correct rate(staircase method)
+
 class Timer{
     private:
         time_t start_ts;
@@ -138,7 +144,8 @@ int exercise_generator(int level){
         }
 
         
-        // UI and answer 3*3 combs: M1  (M2: make use of prefix expression)
+        // UI and answer 3*3 combs: Method1  
+        // (Method2: make use of prefix expression?)
         select_first = rand() % 3;
         select_second = rand() % 3;
         select_pair = rand() % 2;
@@ -184,28 +191,22 @@ int main(){
     while (temp--)
     {
         ans=exercise_generator(level);
-        
-        cin>>enter;
-        // system("Color 01"); //sh: 1: Color: not found
 
+        cin>>enter;
         if (stoi(enter) == ans)
         {
             point++;
-            
             //ANSI escape color codes :
             cout << "\x1B[32m";
             cout<<"correct";
             cout<<"\033[0m\t\t"<<"\n";
-            //
         }
         else
         {
-            
-        // system("Color 03");
-           cout << "\x1B[31m";
-           cout << "incorrect, answer is " << ans;
-           cout << "\033[0m\t\t"
-                << "\n";
+            cout << "\x1B[31m";
+            cout << "incorrect, answer is " << ans;
+            cout << "\033[0m\t\t"
+                 << "\n";
         }
         cout<<"------------";
     }
