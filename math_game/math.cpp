@@ -14,6 +14,10 @@ using namespace std;
 // - level 6: three variables/one-two-two digit    - add/minus/multiply
 // - level 7: three variables/two-two-two digit    - add/minus/multiply
 
+//about level design, there are somthing to reconsider(if i have time to reconstruct this app):
+    // 70+80 is two two, but it's relatively easier than 87+49 (or maybe is as easy as 8+7)
+    // the more carries an arithmatic contains, the more mental memory the subject need to use to retain each carry
+    
 // next update:
     // use header file
     // handling exception of cin<<enter, stoi(enter)
