@@ -218,7 +218,11 @@ int main(){
 
     cout << "\nthis is your score: " << point << "/" << iteration << endl;
     cout << "time: " << RA << endl;
+    if(point!=iteration){
+
+    cout << "\x1B[31m";
     cout << R"(
+        HOW DARE YOU!
     ⡏⠙⠻⢦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⠶⠟⠛⠿⠗⣦⣄⠀⠀⠀⠀
     ⡇⠀⠀⠀⠀⠙⠦⣄⠀⠀⠀⠀⠀⠀⠀⢀⣴⠋⠀⠀⠀⠀⠀⠀⠀⠉⢧⡀⠀⠀
     ⠙⢄⠀⠀⠀⠀⠀⠙⠲⢦⣀⠀⠀⠀⠀⣸⠋⠀⠀⠀⢠⣤⠀⠀⠀⠀⠘⢳⡀⠀
@@ -231,6 +235,23 @@ int main(){
     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠇⠀⠀⠀⠀⠀⠀
     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⠀⠀⠀⠀⠀⠀⠀
     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⡏)"<<endl;
+            cout << "\033[0m\t\t"
+                 << "\n";
+
+    }else{
+         cout << "\x1B[32m";
+         cout << R"(
+        Good boy!
+       ___
+    __/_  `.  .-"""-.
+    \_,` | \-'  /   )`-')
+     "") `"`    \  ((`"`
+    ___Y  ,    .'7 /|
+   (_,___/...-` (_/_/ 
+)" << endl;
+         cout << "\033[0m\t\t"
+              << "\n";
+    }
     record << "level:\t" << level << "\tscores:\t" << point << "\t/\t" << iteration;
     record << "\treaction time:\t" << RA << "\t";
     record<< asctime(localtime(&date));
