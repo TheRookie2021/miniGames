@@ -75,7 +75,6 @@ int exercise_generator(int level){
     if(level<=3)
     { // two variables
         int a,b,select;
-        select=rand() % 3;
         
         switch (level)
         {//setting digit of variables
@@ -91,33 +90,10 @@ int exercise_generator(int level){
         }
 
         // UI and answer
-        if (select== 0)
-        { // add
-            cout << endl
-                 << a << " + " << b << " = ";
-            ans = a + b;
-        }
-        else if (select == 1)
-        { // minus
-            cout << endl;
-            select=rand()%2;
-            if (select)
-            {
-                cout << a << " - " << b << " = ";
-                ans = a - b;
-            }
-            else
-            {
-                cout << b << " - " << a << " = ";
-                ans = b - a;
-            }
-        }
-        else if (select % 3 == 2)
-        { // multiply
-            cout << endl
-                 << a << " * " << b << " = ";
-            ans = a * b;
-        }
+        select=rand() % 3;
+        ans = CharToOp(a, SelectOp(select), b);
+        cout << endl
+             << a << " " << SelectOp(select) << " " << b << " = ";
     }
     if (level > 3 && level <= 7)
     {//threee variables
