@@ -17,7 +17,7 @@
         - handling exception of cin<<enter, stoi(enter)
         - let level be a variable varies according to the current correct rate(staircase method)
 ### English Typing practice
-- practicing English type as fast and correct as possible!
+- practicing English typing as fast and correct as possible!
     - feature: record time and correctness  
     - futher: 
         - analysis which part of the typing can be mistake easily
