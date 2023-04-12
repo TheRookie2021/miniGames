@@ -1,5 +1,6 @@
 # This repo contains some mini games
-- math game(C++): a simple game that trains your basic calculation skill in terminal  
+### Arithmatic game(C++): 
+- a simple game that trains your basic calculation skill in terminal  
     - features: record info like correcte rate and reaction time
         - level 1: two variables/one-one digit  - add/minus/multiply
         - level 2: two variables/one-two digit  - add/minus/multiply
@@ -15,3 +16,9 @@
         - use header file
         - handling exception of cin<<enter, stoi(enter)
         - let level be a variable varies according to the current correct rate(staircase method)
+### English Typing practice
+- practicing English type as fast and correct as possible!
+    - feature: record time and correctness  
+    - futher: 
+        - analysis which part of the typing can be mistake easily
+        - record which part of the work(typing) is relatively slower
